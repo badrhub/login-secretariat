@@ -11,9 +11,12 @@ import com.jvm.dao.AppRoleRepository;
 import com.jvm.dao.AppUserRepository;
 import com.jvm.entities.AppRole;
 import com.jvm.entities.AppUser;
+
+
 @Service
 @Transactional
 public class AccountServiceImpl implements AccountService{
+	
 	@Autowired
 	private AppUserRepository appUserRepository;
 	@Autowired

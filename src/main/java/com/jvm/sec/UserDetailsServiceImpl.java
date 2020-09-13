@@ -13,13 +13,18 @@ import org.springframework.stereotype.Service;
 
 import com.jvm.entities.AppUser;
 import com.jvm.service.AccountService;
+
+
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService{
+	
 	@Autowired
 	private AccountService accountService;
+	
 	@Override
 	public UserDetails loadUserByUsername(String arg0) throws UsernameNotFoundException {
 		AppUser appUser =accountService.loadUserByUsername(arg0);
+		
 		if(appUser == null) throw new UsernameNotFoundException("invalid user");
 		Collection<GrantedAuthority> authorities = new ArrayList<>();
 		appUser.getRoles().forEach(r->{
